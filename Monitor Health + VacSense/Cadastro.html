@@ -246,25 +246,34 @@
     <div class="hide">
     <div class="hide2">
 
-        <div class="modal">
-            <h2 class="modal-header">Orçamento</h2>
-            <p class="modal-body">Peça seu orçamento e vamos entrar em contato o mais rápido possível!</p>
+        <div class="modal" style="margin-top: 15px;">
+            <button onclick="close_modal()" style=" margin-left: 330px; width: 20px; height: 20px; border-radius: 50%; border: none; background-color: #0f5c60; cursor: pointer; color: white;">X</button>
+        
+        <h2 style="margin-left: 10px;" class="modal-header">Orçamento</h2>
+        
+        <p class="modal-body">Peça seu orçamento e vamos entrar em contato o mais rápido possível!</p>
+    
 
-            <form>
-            <input type="name" class="colocar" placeholder="Nome do Responsável"><br>
-            <input type="name" class="colocar" placeholder="Nome da Empresa"><br>
-            <input type="number" class="colocar" placeholder="Telefone"><br>
-            <input type="e-mail" class="colocar" placeholder="E-mail"><br>
-            </form>
-            
-            <button onclick="close_modal()" class="floating">Peça seu orçamento</button>
-        </div>
+        <form>
+        <input type="name" class="colocar" placeholder="Nome do Responsável"><br>
+        <input type="name" class="colocar" placeholder="Nome da Empresa"><br>
+        <input type="number" class="colocar" placeholder="Telefone"><br>
+        <input type="e-mail" class="colocar" placeholder="E-mail"><br>
+        </form>
+        
+        <button onclick="alert_modal()" class="floating">Peça seu orçamento</button>
+    </div>
     </div>
 </div>
     `
 }
 
 function close_modal(){
+    fade.innerHTML = " "
+}
+
+function alert_modal(){
+    alert("Orçamento enviado com sucesso!")
     fade.innerHTML = " "
 }
 </script>
