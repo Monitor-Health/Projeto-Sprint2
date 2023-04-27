@@ -11,7 +11,7 @@ const data = {
         label: 'Temperatura °C',
         backgroundColor: 'rgb(77,77,77)',
         borderColor: 'rgb(77,77,77)',
-        data: [2.51, 2.53, 2.55, 2.57, 2.60, 2.65]
+        data: [3.51, 3.93, 4.55, 3.57, 4.60, 4.01]
     }
     ]
 }
