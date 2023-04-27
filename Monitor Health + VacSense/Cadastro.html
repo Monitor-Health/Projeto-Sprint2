@@ -41,7 +41,7 @@
         <div class="container2">
             <!-- começa fundo cinza -->
 
-                <form action="Cadastro.html#bem_vindo"  class="engloba">
+                <form action=""  class="engloba">
                     <div style="margin-top: 5px;" class="centro_cadastro">
                         <h3>Cadastre-se</h3>
                     </div>
@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="centro_cadastro">
-                        <input required class="input" style="margin-left: 53px; width: 300px;" type="text" placeholder="Nome do Responsável*">
+                        <input required class="input" style="margin-left: 53px; width: 300px;" type="text" id="inp_nome_resp" placeholder="Nome do Responsável*">
                         <input required class="input" style=" margin-left: -30px; width: 150px;" type="number"
                             placeholder="Telefone*">
                     </div>
@@ -118,7 +118,7 @@
 
                     <div style="margin-top: -15px;"class="centro_cadastro">
 
-                    <a href="#div_bem_vindo"><button href="#div_1" style="font-size: 13px; padding: 10px 25px; margin-top: 15px;" class="botao_cliente" onclick="cadastrar()">Cadastrar</button></a>
+                    <button onclick="cadastrar()" href="#div_1" style="font-size: 13px; padding: 10px 25px; margin-top: 15px;" class="botao_cliente">Cadastrar</button>
                     </div>
 
 
@@ -202,15 +202,18 @@
 </html>
 
 <script>
-    var URL = 'https://viacep.com.br/ws'
+    var URL = 'https://viacep.com.br/ws';
+    
 
-    async function cadastrar(){
+    function cadastrar(){
+        var nome = inp_nome_resp.value
+        event.preventDefault();
         div_bem_vindo.innerHTML = `
     </div>
     <div class="bem_vindo" id="bem_vindo">
         <div class="fundo_bem_vindo">
         <div style=" margin-left: 150px; width: 35%;">
-            <h2>Bem-vindo(a)!</h2>
+            <h2>Bem-vindo(a)! ${nome} </h2> 
             <p style="color: #525252;">Falta pouco para sua empresa começar a desfrutar de todos os benefícios do sensor VacSense!</p>
             <p style="color: #525252;"> Aguarde um de nossos representantes entrar em contato para mais informações do serviço.</p>
             <p style="color: #525252;"> Monitor Health agradece!</p> 
@@ -222,7 +225,10 @@
         </div>
     </div>
         `
+        window.location.href = "#bem_vindo";
     }
+
+
 
     async function showEndereco(){
         var cep = input_cep.value;
