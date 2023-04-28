@@ -4,7 +4,7 @@ var options = {
         labels: ["Aberto (%)", "Fechado(%)" ],
         datasets: [{
             label: 'Status Geladeira',
-            data: [75, 25],
+            data: [15, 85],
             backgroundColor: ['#E8B1B1', '#A8C6A8']
 
         }]
