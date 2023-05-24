@@ -25,10 +25,8 @@ CREATE TABLE Empresa (
   bairro VARCHAR (200),
   cidade VARCHAR (200) NOT NULL,
   fkEstado INT,
-  fkSegmento INT,
-  CONSTRAINT fkEstadoConst FOREIGN KEY (fkEstado) REFERENCES Estado(id),
-  CONSTRAINT fkSegmentoConst FOREIGN KEY (fkSegmento) REFERENCES Segmento(id)
-);
+  CONSTRAINT fkEstadoConst FOREIGN KEY (fkEstado) REFERENCES Estado(id)
+  );
 
 CREATE TABLE Permissao(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,6 +56,15 @@ CREATE TABLE Sensor (
   fkEmpresa INT,
   CONSTRAINT fkTipoSensorConst FOREIGN KEY (fkTipoSensor) REFERENCES TipoSensor(id),
   CONSTRAINT fkEmpresaConstSensor FOREIGN KEY (fkEmpresa) REFERENCES Empresa(id)
+);
+
+CREATE TABLE empresaSegmento(
+empresa_id INT,
+segmento_id INT,
+dtHr DATETIME,
+constraint constEmpresa_id foreign key (empresa_id) references Empresa(id),
+constraint constSegmento_id foreign key (segmento_id) references Segmento(id),
+constraint pkAssociativa primary key (empresa_id,segmento_id)
 );
 
 CREATE TABLE Dados (
@@ -103,10 +110,16 @@ INSERT INTO Segmento (nome) VALUES
 ('Seguros de saúde'),
 ('Tecnologia da Informação em Saúde');
 
-INSERT INTO Empresa (nomeResposavel, nomeFantasia, cnpj, tel, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, fkEstado, fkSegmento) VALUES 
-('João Silva', 'Vacina Fácil', '12345678901234', '(11)99999-9999', '00000-000', 'Rua', 'Rua das Flores', '123', 'Sala 2', 'Centro', 'São Paulo', 25, 1),
-('Maria Santos', 'Imunização Segura', '23456789012345', '(21)88888-8888', '11111-111', 'Avenida', 'Avenida dos Coqueiros', '456', NULL, 'Praia do Futuro', 'Fortaleza', 6, 2),
-('José Pereira', 'Vacine Já', '34567890123456', '(51)77777-7777', '22222-222', 'Rua', 'Rua das Palmeiras', '789', NULL, 'Jardim Botânico', 'Porto Alegre', 20, 1);
+INSERT INTO Empresa (nomeResposavel, nomeFantasia, cnpj, tel, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, fkEstado) VALUES 
+('João Silva', 'Vacina Fácil', '12345678901234', '(11)99999-9999', '00000-000', 'Rua', 'Rua das Flores', '123', 'Sala 2', 'Centro', 'São Paulo', 25),
+('Maria Santos', 'Imunização Segura', '23456789012345', '(21)88888-8888', '11111-111', 'Avenida', 'Avenida dos Coqueiros', '456', NULL, 'Praia do Futuro', 'Fortaleza', 6),
+('José Pereira', 'Vacine Já', '34567890123456', '(51)77777-7777', '22222-222', 'Rua', 'Rua das Palmeiras', '789', NULL, 'Jardim Botânico', 'Porto Alegre', 20);
+
+INSERT INTO empresaSegmento VALUES
+(1,1),
+(1,2),
+(2,1),
+(2,2);
 
 INSERT INTO Permissao (autoridade) VALUES 
 ('Administrador'),
